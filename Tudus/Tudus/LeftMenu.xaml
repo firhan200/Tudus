@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Tudus"
+             x:Class="Tudus.LeftMenu"
+             Title="Sidebar">
+
+    <StackLayout>
+        <StackLayout BackgroundColor="#7819D2" HeightRequest="100">
+            <Image Source="iconwhite" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" HeightRequest="30"></Image>
+        </StackLayout>
+        <ListView x:Name="LeftMenuListView" HasUnevenRows="True" Margin="0,-6,0,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid BackgroundColor="White" Padding="20" Margin="0,-1,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Text="{Binding Title}" FontSize="Small" TextColor="Black"></Label>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+    
+</ContentPage>

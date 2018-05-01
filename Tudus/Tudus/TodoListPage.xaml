@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Tudus"
+             x:Class="Tudus.TodoListPage"
+             Icon="todolist">
+
+    <StackLayout>
+        <StackLayout x:Name="TomorrowTodoHead" BackgroundColor="White" Padding="20,5,20,5" IsVisible="False" Margin="0,0,0,-5">
+            <Label Text="Upcoming Todo" FontSize="Micro" TextColor="Black"></Label>
+        </StackLayout>
+        <StackLayout x:Name="TomorrowTodo" BackgroundColor="White" Padding="20" IsVisible="False" Margin="0,0,0,-5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Image Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Source="upcoming" HeightRequest="30" HorizontalOptions="End" VerticalOptions="Center"></Image>
+                <Label Grid.Column="0" Grid.Row="0" x:Name="TomorrowLabel" TextColor="Black" FontSize="Small"></Label>
+                <Label Grid.Column="0" Grid.Row="1" x:Name="TotalTodoTomorrow" TextColor="DarkGray" FontSize="Micro"></Label>
+            </Grid>
+        </StackLayout>
+        <StackLayout x:Name="TodoListLabel" BackgroundColor="White" Padding="20,5,20,5" Margin="0,0,0,-5" IsVisible="False">
+            <Label x:Name="TodoListLabelText" Text="Todo List" FontSize="Micro" TextColor="Black"></Label>
+        </StackLayout>
+        <StackLayout Grid.Column="0" Grid.Row="0" x:Name="NoData" VerticalOptions="CenterAndExpand" IsVisible="False">
+            <Label Text="your future tasks here" TextColor="LightGray" FontSize="Small" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"></Label>
+        </StackLayout>
+        <ListView x:Name="TodoListView" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid BackgroundColor="White" Padding="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Text="{Binding Date}" FontSize="Small" TextColor="Black"></Label>
+                            <Label Grid.Column="0" Grid.Row="1" Text="{Binding TotalTodo}" FontSize="Micro" TextColor="DarkGray" HorizontalTextAlignment="Start"></Label>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

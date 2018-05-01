@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Tudus"
+             x:Class="Tudus.AddTodoPage"
+             Title="Add Todo">
+
+    <StackLayout>
+        <StackLayout x:Name="Loader" VerticalOptions="CenterAndExpand" IsVisible="False">
+            <ActivityIndicator Color="Purple" IsRunning="True" HorizontalOptions="Center" HeightRequest="50"></ActivityIndicator>
+        </StackLayout>
+        <StackLayout x:Name="DateForm" BackgroundColor="White" Padding="20">
+            <Label Text="Date:" FontSize="Micro" TextColor="Gray"></Label>
+            <DatePicker x:Name="Date" Margin="0,-10,0,0"></DatePicker>
+        </StackLayout>
+        <ListView x:Name="TodoItemListView" HasUnevenRows="True" Margin="0,-5,0,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
+                        </ViewCell.ContextActions>
+                        <Grid BackgroundColor="White" Padding="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="80"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Text="Title:" FontSize="Micro" TextColor="Gray"></Label>
+                            <Image Grid.Column="1" Grid.Row="0" Source="delete" HeightRequest="7" HorizontalOptions="End"></Image>
+                            <Entry Text="{Binding Title}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Placeholder="Entry Title" Margin="0,-10,0,0"></Entry>
+                            <Label Grid.Column="0" Grid.Row="2" Text="Description:" FontSize="Micro" TextColor="Gray"></Label>
+                            <Entry Text="{Binding Description}" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Placeholder="Entry Description" FontSize="Micro" Margin="0,-10,0,0"></Entry>
+                            <Label Grid.Column="0" Grid.Row="4" Text="Time set:" FontSize="Micro" TextColor="Gray"></Label>
+                            <TimePicker Time="{Binding Time}" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Margin="0,-10,0,0"></TimePicker>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Footer>
+                <StackLayout BackgroundColor="White" Padding="20">
+                    <Grid BackgroundColor="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"></ColumnDefinition>
+                            <ColumnDefinition Width="5*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Button Grid.Column="0" Grid.Row="0" BackgroundColor="DeepSkyBlue" TextColor="White" Text="Add More" Clicked="AddMoreTodo"></Button>
+                        <Button Grid.Column="1" Grid.Row="0" BackgroundColor="LightGreen" TextColor="White" Text="Save" Clicked="SaveTodo"></Button>
+                    </Grid>
+                </StackLayout>
+            </ListView.Footer>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Tudus"
+             x:Class="Tudus.NoteSearchPage"
+             Title="Search Note">
+
+    <StackLayout>
+        <StackLayout BackgroundColor="White" Padding="20">
+            <Label Text="Search:" FontSize="Micro" TextColor="Black"></Label>
+            <Entry x:Name="Keyword" FontSize="Small" Placeholder="Enter keyword" PlaceholderColor="#BDBDBD" Margin="0,-5,0,0"></Entry>
+        </StackLayout>
+        <StackLayout x:Name="Loader" VerticalOptions="CenterAndExpand" IsVisible="False">
+            <ActivityIndicator Color="Purple" IsRunning="True" HorizontalOptions="Center" HeightRequest="50"></ActivityIndicator>
+        </StackLayout>
+        <StackLayout x:Name="NoData" VerticalOptions="CenterAndExpand" IsVisible="False">
+            <Label Text="No Result" TextColor="Gray" HorizontalOptions="Center"></Label>
+        </StackLayout>
+        <ListView x:Name="NoteItemListView" HasUnevenRows="True" Margin="0,-5,0,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid BackgroundColor="White" Padding="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Text="{Binding Note}" TextColor="Black" FontSize="Small"></Label>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+    
+</ContentPage>

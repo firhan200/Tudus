@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Tudus"
+             x:Class="Tudus.NoteListPage"
+             Title="Notes">
+
+    <StackLayout>
+        <StackLayout x:Name="Loader" VerticalOptions="CenterAndExpand" IsVisible="False">
+            <ActivityIndicator Color="Purple" IsRunning="True" HorizontalOptions="Center" HeightRequest="50"></ActivityIndicator>
+        </StackLayout>
+        <ListView x:Name="NoteListView" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid BackgroundColor="White" Padding="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="7*"></ColumnDefinition>
+                                <ColumnDefinition Width="3*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Text="{Binding Title}" TextColor="Black" LineBreakMode="TailTruncation"></Label>
+                            <Label Grid.Column="0" Grid.Row="1" Text="{Binding TotalItem}" FontSize="Micro"></Label>
+                            <Label Grid.Column="1" Grid.Row="1" Text="{Binding CreatedAt}" FontSize="Micro" HorizontalOptions="End"></Label>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

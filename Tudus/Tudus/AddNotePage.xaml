@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Tudus"
+             x:Class="Tudus.AddNotePage"
+             Title="Add Note">
+
+    <StackLayout>
+        <StackLayout VerticalOptions="Start" BackgroundColor="White" Padding="20">
+            <Label Text="Title" FontSize="Micro"></Label>
+            <Entry x:Name="Title" FontSize="Small" Margin="0,-10,0,0"></Entry>
+        </StackLayout>
+        <StackLayout BackgroundColor="White" Padding="20,5,5,5" Margin="0,-5,0,0">
+            <Label Text="Note items:" TextColor="Black" FontSize="Micro"></Label>
+        </StackLayout>
+        <ListView x:Name="NoteItemListView" HasUnevenRows="True" Margin="0,-5,0,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
+                        </ViewCell.ContextActions>
+                        <Grid BackgroundColor="White" Padding="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Image Grid.Column="0" Grid.Row="0" Source="delete" HeightRequest="7" HorizontalOptions="End" VerticalOptions="Start"></Image>
+                            <Entry Grid.Column="0" Grid.Row="0" Text="{Binding Note}" FontSize="Small" Placeholder="note"></Entry>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Footer>
+                <StackLayout BackgroundColor="White" Padding="20">
+                    <Grid BackgroundColor="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"></ColumnDefinition>
+                            <ColumnDefinition Width="5*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Button Grid.Column="0" Grid.Row="0" BackgroundColor="DeepSkyBlue" TextColor="White" Text="Add More" Clicked="AddMoreNoteItem"></Button>
+                        <Button Grid.Column="1" Grid.Row="0" BackgroundColor="LightGreen" TextColor="White" Text="Save" Clicked="SaveNote"></Button>
+                    </Grid>
+                </StackLayout>
+            </ListView.Footer>
+        </ListView>
+    </StackLayout>
+    
+</ContentPage>

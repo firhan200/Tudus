@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Tudus"
+             x:Class="Tudus.NoteDetailPage"
+             Title="Detail">
+
+    <StackLayout>
+        <StackLayout BackgroundColor="White" Padding="20">
+            <Label x:Name="Title" FontSize="Medium" TextColor="Black"></Label>
+        </StackLayout>
+        <StackLayout BackgroundColor="White" Padding="20,5,20,5" Margin="0,-5,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                    <ColumnDefinition Width="6*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Column="0" Grid.Row="0" x:Name="TotalItem" FontSize="Micro" TextColor="Black"></Label>
+                <Label Grid.Column="1" Grid.Row="0" x:Name="CreatedAt" FontSize="Micro" HorizontalOptions="End"></Label>
+            </Grid>
+        </StackLayout>
+        <ListView x:Name="NoteItemListView" HasUnevenRows="True" Margin="0,-5,0,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid BackgroundColor="White" Padding="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Text="{Binding Note}" TextColor="Black" FontSize="Small"></Label>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+    
+</ContentPage>

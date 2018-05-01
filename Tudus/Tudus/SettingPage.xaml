@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Tudus"
+             x:Class="Tudus.SettingPage"
+             Title="Settings">
+
+    <ScrollView>
+        <StackLayout>
+            <StackLayout x:Name="ApplicationLockHeader">
+                <Label Text="Application Lock" TextColor="Purple" FontSize="Small"></Label>
+            </StackLayout>
+            <StackLayout x:Name="LockContainer" Orientation="Horizontal" Margin="0,-6,0,0">
+                <Label x:Name="tes1" Text="Lock" FontSize="Small" VerticalTextAlignment="Center"></Label>
+                <Switch x:Name="LockSwitch" HorizontalOptions="EndAndExpand"></Switch>
+            </StackLayout>
+            <StackLayout x:Name="SetPasswordContainer" Orientation="Horizontal" Margin="0,-5,0,0">
+                <Label Text="Set Password" FontSize="Small"></Label>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+    
+</ContentPage>

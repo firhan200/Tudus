@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Tudus"
+             x:Class="Tudus.TodayListPage"
+             Icon="todayicon">
+
+    <StackLayout>
+        <StackLayout BackgroundColor="White" Padding="20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Source="icon" HeightRequest="50" VerticalOptions="Center"></Image>
+                <Label Grid.Column="1" Grid.Row="0" x:Name="TodayHeader" TextColor="Purple" FontAttributes="Bold" FontSize="Medium"></Label>
+                <Label Grid.Column="1" Grid.Row="1" x:Name="TodaySubHeader" TextColor="Gray" FontSize="Small"></Label>
+            </Grid>
+        </StackLayout>
+        <Grid VerticalOptions="FillAndExpand" Margin="0,-5,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Column="0" Grid.Row="0" x:Name="NoData" VerticalOptions="CenterAndExpand" IsVisible="False">
+                <Label Text="no tasks" TextColor="LightGray" FontSize="Small" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"></Label>
+            </StackLayout>
+            <ListView Grid.Column="0" Grid.Row="0" x:Name="TodayListView" HasUnevenRows="True" VerticalOptions="FillAndExpand" SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid BackgroundColor="White" Padding="20" Margin="15,15,15,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="60"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Text="{Binding Time}" FontSize="Small" TextColor="DarkGray" HorizontalTextAlignment="End" VerticalTextAlignment="Center"></Label>
+                                <Label Grid.Column="0" Grid.Row="0" Text="{Binding Title}" FontSize="Small" TextColor="Black"></Label>
+                                <Label Grid.Column="0" Grid.Row="1" Text="{Binding Description}" FontSize="Micro" TextColor="DarkGray" HorizontalTextAlignment="Start"></Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Image Grid.Column="0" Grid.Row="0" x:Name="EditTodoBtn" Source="gearbg" HeightRequest="40" HorizontalOptions="End" VerticalOptions="End" Margin="0,0,15,75"></Image>
+            <Image Grid.Column="0" Grid.Row="0" x:Name="AddTodoBtn" Source="plus" HeightRequest="40" HorizontalOptions="End" VerticalOptions="End" Margin="0,0,15,20"></Image>
+        </Grid>
+    </StackLayout>
+
+</ContentPage>
